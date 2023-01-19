@@ -6,6 +6,7 @@
 #include "AGL.h"
 #include "AGLM.h"
 #include <cmath>
+#include <iostream>
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -13,7 +14,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
    {
       glfwSetWindowShouldClose(window, GLFW_TRUE);
    }
+   else{
+    std::cout << "This is a message!\n"; 
+   }
 }
+
 
 int main(int argc, char** argv)
 {
@@ -52,9 +57,13 @@ int main(int argc, char** argv)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the buffers
 
     // Animate the screen color as a test
-    double time = glfwGetTime();
-    double red = (sin(time) + 1) * 0.5; // map sin value [-1,1] to color value [0,1]
-    double blue = (cos(time) + 1) * 0.5; // map cos value [-1,1] to color value [0,1]
+    //double time = glfwGetTime();
+    
+    //double red = (sin(time) + 1) * 0.5; // map sin value [-1,1] to color value [0,1]
+    //double blue = (cos(time) + 1) * 0.5; // map cos value [-1,1] to color value [0,1]
+
+    double red, blue;
+    glfwGetCursorPos(window, &red, &blue);
 
     // Create a vector to test glm
     glm::vec3 color(red, 0, blue);
